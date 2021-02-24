@@ -1,6 +1,8 @@
 # website-styles
 Styling for the GlamSci website
 
+[Screenshots](example/)
+
 ## Sass CSS generation
 Uses: https://sass-lang.com/guide
 Quick global install: `npm install -g sass`
