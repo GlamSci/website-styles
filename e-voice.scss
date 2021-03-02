@@ -80,8 +80,16 @@ html {
   .dropdown-menu ul {
     font-family: $menu_font !important;
     text-transform: uppercase !important;
-    font-size: 1em;
+    font-size: 1.2em !important;
     font-weight: bold;
+  }
+}
+
+.navbar-nav {
+  li {
+    a, a:link, a:focus {
+      padding: 12px 1.2em !important;
+    }
   }
 }
 
