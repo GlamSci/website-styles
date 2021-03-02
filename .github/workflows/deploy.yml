@@ -42,8 +42,8 @@ jobs:
 
       - name: Copy files to the test website with the AWS CLI
         run: |
-          aws s3 cp custom.css s3://glamsci-website-styles/ --acl public-read --cache-control "public, max-age=120" --content-type  "text/css"
-          aws s3 cp custom.css.map s3://glamsci-website-styles/ --acl public-read --cache-control "public, max-age=60" --content-type  "application/json"
-          aws s3 cp e-voice.scss s3://glamsci-website-styles/ --acl public-read --cache-control "public, max-age=60" --content-type  "text/x-scss"
+          aws s3 cp custom.css s3://glamsci-website-styles/ --acl public-read --cache-control "public, max-age=21600" --content-type  "text/css"
+          aws s3 cp custom.css.map s3://glamsci-website-styles/ --acl public-read --cache-control "public, max-age=18000" --content-type  "application/json"
+          aws s3 cp e-voice.scss s3://glamsci-website-styles/ --acl public-read --cache-control "public, max-age=18000" --content-type  "text/x-scss"
           aws s3 cp fonts s3://glamsci-website-styles/fonts/ --recursive --acl public-read --cache-control "public, max-age=31556952" --content-type "font/tff"
-          aws s3 cp css s3://glamsci-website-styles/css/ --recursive --acl public-read --cache-control "public, max-age=3600" --content-type "font/ttf"
+          aws s3 cp css s3://glamsci-website-styles/css/ --recursive --acl public-read --cache-control "public, max-age=604800" --content-type "font/ttf"
