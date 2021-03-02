@@ -6,7 +6,7 @@ $primary_pink: #f20762;
 $primary_font: 'alegreya', serif;
 $primary_textcolour: white;
 
-$menu_font: 'Roboto Mono';
+$menu_font: 'Roboto Mono', serif;
 
 $secondary_pink: #8b0136;
 
@@ -19,14 +19,29 @@ $hidden_header_fontsize: 18px;
   https://fonts.google.com/attribution
 */
 @use 'css/RobotoMono.css';
-
 @use 'css/Alegreya.css';
 
+html {
+  background: #333333;
+}
 body {
   background: $main_bgcolour !important;
   color: $main_textcolour !important;
   font-size: $main_fontsize !important;
   font-family: $primary_font;
+}
+
+html {
+  .main-content,
+  .main-content span,
+  h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: $primary_font !important;
+  }
+}
+
+img,
+.panel img {
+    height: auto !important;
 }
 
 .navbar,
@@ -36,6 +51,20 @@ body {
 
 #header-hidden-link {
   top: -1em !important;
+}
+
+html {
+  th, td, table, tbody {
+    border: none !important;
+  }
+  th, td {
+    padding: 1em 2em 1em 2em !important;
+    text-align: left !important;
+    border: none !important;
+  }
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
 }
 
 html {
@@ -63,7 +92,7 @@ html {
 
 .js-clingify-locked {
   background: $primary_pink !important;
-  border-bottom: 0.5em solid $primary_pink !important;
+  border-bottom: none !important;
 }
 
 .btn-primary {

@@ -34,11 +34,26 @@
   - Alegreya
   https://fonts.google.com/attribution
 */
+html {
+  background: #333333;
+}
+
 body {
   background: white !important;
   color: black !important;
   font-size: 16px !important;
   font-family: "alegreya", serif;
+}
+
+html .main-content,
+html .main-content span,
+html h1, html h2, html h3, html h4, html h5, html h6, html .h1, html .h2, html .h3, html .h4, html .h5, html .h6 {
+  font-family: "alegreya", serif !important;
+}
+
+img,
+.panel img {
+  height: auto !important;
 }
 
 .navbar,
@@ -50,9 +65,21 @@ body {
   top: -1em !important;
 }
 
+html th, html td, html table, html tbody {
+  border: none !important;
+}
+html th, html td {
+  padding: 1em 2em 1em 2em !important;
+  text-align: left !important;
+  border: none !important;
+}
+html tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
 html .btn-primary,
 html .navbar-nav a {
-  font-family: "Roboto Mono" !important;
+  font-family: "Roboto Mono", serif !important;
   text-transform: uppercase !important;
 }
 
@@ -73,7 +100,7 @@ html .navbar-nav a {
 
 .js-clingify-locked {
   background: #f20762 !important;
-  border-bottom: 0.5em solid #f20762 !important;
+  border-bottom: none !important;
 }
 
 .btn-primary {
