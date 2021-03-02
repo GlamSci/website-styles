@@ -89,12 +89,15 @@ html .dropdown-menu li,
 html .dropdown-menu ul {
   font-family: "Roboto Mono", serif !important;
   text-transform: uppercase !important;
+  font-size: 1em;
+  font-weight: bold;
 }
 
 .header-hidden {
   background: #f20762 !important;
   color: white !important;
-  font-size: 18px !important;
+  font-size: 1.2em !important;
+  font-weight: bold;
 }
 .header-hidden a {
   background: #f20762 !important;
