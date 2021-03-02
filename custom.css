@@ -182,6 +182,9 @@ abbr {
 #content a:focus {
   color: #8b0136 !important; }
 
+html .navbar-nav {
+  margin-bottom: -2px; }
+
 html .navbar-nav i,
 html #navigation i,
 html #jPanelMenu-menu i {
@@ -189,7 +192,6 @@ html #jPanelMenu-menu i {
 html .navbar-nav li a,
 html #navigation li a,
 html #jPanelMenu-menu li a {
-  background: #f20762 !important;
   color: white !important; }
 html .navbar-nav li a:hover,
 html .navbar-nav li a:focus,

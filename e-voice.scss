@@ -239,6 +239,12 @@ abbr {
 }
 
 html {
+  .navbar-nav {
+    margin-bottom: -2px;
+  }
+}
+
+html {
   .navbar-nav,
   #navigation,
   #jPanelMenu-menu {
@@ -247,7 +253,7 @@ html {
     }
     li {
       a {
-        background: $primary_pink !important;
+        // background: $primary_pink !important;
         color: $primary_textcolour !important;
       }
     }
