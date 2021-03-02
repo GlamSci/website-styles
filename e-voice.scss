@@ -45,8 +45,13 @@ img,
 }
 
 .navbar,
-#header-hidden-link a {
+#header-hidden-link a,
+html .dropdown-menu a {
   background: $primary_pink !important;
+}
+
+html .dropdown-menu {
+  border-bottom: none !important;
 }
 
 #header-hidden-link {
@@ -69,7 +74,10 @@ html {
 
 html {
   .btn-primary,
-  .navbar-nav a {
+  .navbar-nav a,
+  .dropdown-menu a,
+  .dropdown-menu li,
+  .dropdown-menu ul {
     font-family: $menu_font !important;
     text-transform: uppercase !important;
   }

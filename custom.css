@@ -57,8 +57,13 @@ img,
 }
 
 .navbar,
-#header-hidden-link a {
+#header-hidden-link a,
+html .dropdown-menu a {
   background: #f20762 !important;
+}
+
+html .dropdown-menu {
+  border-bottom: none !important;
 }
 
 #header-hidden-link {
@@ -78,7 +83,10 @@ html tr:nth-child(even) {
 }
 
 html .btn-primary,
-html .navbar-nav a {
+html .navbar-nav a,
+html .dropdown-menu a,
+html .dropdown-menu li,
+html .dropdown-menu ul {
   font-family: "Roboto Mono", serif !important;
   text-transform: uppercase !important;
 }
