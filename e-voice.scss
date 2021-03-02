@@ -257,8 +257,13 @@ html {
         color: $primary_textcolour !important;
       }
     }
-    li,
     li.active {
+      a {
+        background: $secondary_pink !important;
+        color: $primary_textcolour !important;
+      }
+    }
+    li {
       a:hover,
       a:focus,
       a:active {

@@ -193,24 +193,20 @@ html .navbar-nav li a,
 html #navigation li a,
 html #jPanelMenu-menu li a {
   color: white !important; }
+html .navbar-nav li.active a,
+html #navigation li.active a,
+html #jPanelMenu-menu li.active a {
+  background: #8b0136 !important;
+  color: white !important; }
 html .navbar-nav li a:hover,
 html .navbar-nav li a:focus,
 html .navbar-nav li a:active,
-html .navbar-nav li.active a:hover,
-html .navbar-nav li.active a:focus,
-html .navbar-nav li.active a:active,
 html #navigation li a:hover,
 html #navigation li a:focus,
 html #navigation li a:active,
-html #navigation li.active a:hover,
-html #navigation li.active a:focus,
-html #navigation li.active a:active,
 html #jPanelMenu-menu li a:hover,
 html #jPanelMenu-menu li a:focus,
-html #jPanelMenu-menu li a:active,
-html #jPanelMenu-menu li.active a:hover,
-html #jPanelMenu-menu li.active a:focus,
-html #jPanelMenu-menu li.active a:active {
+html #jPanelMenu-menu li a:active {
   background: #8b0136 !important;
   color: white !important; }
 
