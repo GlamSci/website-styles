@@ -257,7 +257,8 @@ html {
         color: $primary_textcolour !important;
       }
     }
-    li {
+    li,
+    li.active {
       a:hover,
       a:focus,
       a:active {
