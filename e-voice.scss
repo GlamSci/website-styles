@@ -10,7 +10,7 @@ $menu_font: 'Roboto Mono', serif;
 
 $secondary_pink: #8b0136;
 
-$hidden_header_fontsize: 18px;
+$hidden_header_fontsize: 1.2em;
 
 /*
   Uses Google Fonts:
@@ -80,6 +80,8 @@ html {
   .dropdown-menu ul {
     font-family: $menu_font !important;
     text-transform: uppercase !important;
+    font-size: 1em;
+    font-weight: bold;
   }
 }
 
@@ -87,6 +89,7 @@ html {
   background: $primary_pink !important;
   color: $primary_textcolour !important;
   font-size: $hidden_header_fontsize !important;
+  font-weight: bold;
   a {
     background: $primary_pink !important;
     color: $primary_textcolour !important;
