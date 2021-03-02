@@ -94,7 +94,7 @@ html .dropdown-menu ul {
 }
 
 .navbar-nav li a, .navbar-nav li a:link, .navbar-nav li a:focus {
-  padding: 12px 1.2em !important;
+  padding: 12px 1.2em;
 }
 
 .header-hidden {
