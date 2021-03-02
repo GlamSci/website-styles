@@ -1,21 +1,22 @@
 # website-styles
+
 Styling for the GlamSci website
 
-[Screenshots](example/)
-
 ## Sass CSS generation
+
 Uses: https://sass-lang.com/guide
-Quick global install: `npm install -g sass`
+Quick global install: `npm install -g dart-sass`
 
 To generate `custom.css` run:
-`sass e-voice.scss custom.css`
+`dart-sass --embed-sources e-voice.scss:custom.css`
 
-To edit the files and generate the output on the fly, watch can be used:
-`sass -watch e-voice.scss:custom.css`
-
-To see against the _live_ site, use the dev tools sources override against this
+To see against the _live_ site, use Chrome dev tools sources override against this
 directory and run:
-`sass -watch e-voice.scss:.\e-voice.org.uk\resources\themes\appstrap\css\custom.css%3fv=9` (version may change)
+`dart-sass --embed-sources e-voice.scss:.\output\glamsci-website-styles.s3.eu-west-2.amazonaws.com\custom.css` (version may change)
+
+## Deployment
+
+On merge or push to main, a GitHub Action deploys the files to S3.
 
 ### Defaults
 
