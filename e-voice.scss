@@ -146,9 +146,10 @@ body {
 }
 
 html {
-  .btn-primary {
+  .btn-primary,
+  .navbar-nav a {
     font-family: $menu_font !important;
-    text-transform: uppercase;
+    text-transform: uppercase !important;
   }
 }
 
@@ -189,7 +190,8 @@ html {
 }
 
 .navbar {
-  border-bottom: 3px solid $primary_pink !important;
+  margin-bottom: -1px;
+  border-bottom: 6px solid $secondary_pink !important;
 }
 
 .panel {

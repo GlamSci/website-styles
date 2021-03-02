@@ -110,9 +110,10 @@ body {
 #header-hidden-link {
   top: -1em !important; }
 
-html .btn-primary {
+html .btn-primary,
+html .navbar-nav a {
   font-family: "Roboto Mono" !important;
-  text-transform: uppercase; }
+  text-transform: uppercase !important; }
 
 .header-hidden {
   background: #f20762 !important;
@@ -145,7 +146,8 @@ html .btn-primary {
   color: white !important; }
 
 .navbar {
-  border-bottom: 3px solid #f20762 !important; }
+  margin-bottom: -1px;
+  border-bottom: 6px solid #8b0136 !important; }
 
 .panel {
   border-top: 0.5em solid #f20762 !important; }
