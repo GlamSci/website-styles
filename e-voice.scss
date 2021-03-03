@@ -44,20 +44,6 @@ img,
     height: auto !important;
 }
 
-.navbar,
-#header-hidden-link a,
-html .dropdown-menu a {
-  background: $primary_pink !important;
-}
-
-html .dropdown-menu {
-  border-bottom: none !important;
-}
-
-#header-hidden-link {
-  top: -1em !important;
-}
-
 html {
   th, td, table, tbody {
     border: none !important;
@@ -70,6 +56,50 @@ html {
   tr:nth-child(even) {
     background-color: #f2f2f2;
   }
+}
+@media (max-width: 991px) {
+  html {
+    td {
+      display: block !important;
+    }
+  }
+}
+
+// search bar
+
+@media (max-width: 991px) {
+  html {
+    .header .col-md-4,
+    .header .search.hidden-sm {
+      display: none !important;
+    }
+  }
+}
+@media (min-width: 991px) {
+  html {
+    .header .col-md-8 {
+      width: 50% !important;
+    }
+    .header .col-md-4 {
+      width: 50% !important;
+    }
+  }
+}
+
+// header
+
+.navbar,
+#header-hidden-link a,
+html .dropdown-menu a {
+  background: $primary_pink !important;
+}
+
+html .dropdown-menu {
+  border-bottom: none !important;
+}
+
+#header-hidden-link {
+  top: -1em !important;
 }
 
 html {
@@ -148,6 +178,11 @@ abbr {
 #jPanelMenu-menu {
   background: $primary_pink !important;
   color: $primary_textcolour !important;
+  .nav {
+    li {
+      border-top: none !important;
+    }
+  }
 }
 
 /* --- hamburger icon (mobile)--- */
