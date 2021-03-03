@@ -175,13 +175,21 @@ abbr {
 
 /* --- mobile side menu --- */
 
-#jPanelMenu-menu {
-  background: $primary_pink !important;
-  color: $primary_textcolour !important;
-  .nav {
-    li {
-      border-top: none !important;
+body {
+  #jPanelMenu-menu {
+    background: $primary_pink;
+    color: $primary_textcolour !important;
+    .nav {
+      li {
+        border-top: none !important;
+      }
     }
+  }
+}
+
+body[data-menu-position='closed'] {
+  #jPanelMenu-menu {
+    background: none !important;
   }
 }
 
