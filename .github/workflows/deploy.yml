@@ -1,21 +1,20 @@
 name: CD to S3
 
+env:
+  NODE: 14
+
 # Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ main ]
     paths:
-      - 'custom.css'
-      - 'custom.css.map'
       - 'e-voice.scss'
       - 'fonts/*'
       - 'css/*'
   pull_request:
     branches: [ main ]
     paths:
-      - 'custom.css'
-      - 'custom.css.map'
       - 'e-voice.scss'
       - 'fonts/*'
       - 'css/*'
@@ -31,6 +30,16 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "${{ env.NODE }}"
+
+      - name: Build CSS with dart-sass
+        run: |
+          npx --package dart-sass@latest dart-sass --embed-sources e-voice.scss:custom.css
+          ls -lah ./css ./fonts .
 
       # Runs a single command using the runners shell
       - name: Configure AWS credentials from Test account
