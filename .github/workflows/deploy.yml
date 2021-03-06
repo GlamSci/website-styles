@@ -38,6 +38,7 @@ jobs:
 
       - name: Build CSS with dart-sass
         run: |
+          printenv
           npx --package dart-sass@latest dart-sass --embed-sources e-voice.scss:custom.css
           ls -lah ./css ./fonts .
 
