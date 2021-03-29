@@ -84,13 +84,13 @@ jobs:
             -H "Accept: application/vnd.github.v3+json" \
             -H "Authorization: token ${{ secrets.PAT }}" \
             https://api.github.com/repos/${{ github.repository }}/actions/secrets/AWS_ACCESS_KEY_ID \
-            -d '{"encrypted_value":"$AKID","key_id":"$KEY_ID"}'
+            -d "{\"encrypted_value\":\"$AKID\",\"key_id\":\"$KEY_ID\"}"
           
           curl \
             -X PUT \
             -H "Accept: application/vnd.github.v3+json" \
             -H "Authorization: token ${{ secrets.PAT }}" \
             https://api.github.com/repos/${{ github.repository }}/actions/secrets/AWS_SECRET_ACCESS_KEY \
-            -d '{"encrypted_value":"$ASEC","key_id":"$KEY_ID"}'
+            -d "{\"encrypted_value\":\"$ASEC\",\"key_id\":\"$KEY_ID\"}"
             
-          aws iam delete-access-key --access-key-id "${{ secrets.AWS_ACCESS_KEY_ID }}" --status Inactive --user-name "glamsci-website-styles-github-user"
+          aws iam delete-access-key --access-key-id "${{ secrets.AWS_ACCESS_KEY_ID }}" --user-name "glamsci-website-styles-github-user"
