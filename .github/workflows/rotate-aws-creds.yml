@@ -24,8 +24,6 @@ jobs:
             "https://api.github.com/repos/${{ github.repository }}/actions/secrets/public-key")
           export PUBKEY=$PUBKEY
           
-          echo $PUBKEY
-          
           ACCESSKEY=$(aws iam create-access-key --user-name "glamsci-website-styles-github-user")
           
           NEW_ACCESS_KEY_ID=$(echo $ACCESSKEY | jq -r '.AccessKey.AccessKeyId')
@@ -43,14 +41,15 @@ jobs:
 
           def encrypt(public_key: str, secret_value: str) -> str:
               """Encrypt a Unicode string using the public key."""
-              public_key = public.PublicKey(public_key.encode("utf-8"), encoding.Base64Encoder())
+              public_key_bytes = public_key.encode("utf-8")
+              public_key = public.PublicKey(public_key_bytes, encoding.Base64Encoder())
               sealed_box = public.SealedBox(public_key)
               encrypted = sealed_box.encrypt(secret_value.encode("utf-8"))
               return b64encode(encrypted).decode("utf-8")
 
 
           PUBKEY = json.loads(os.getenv("PUBKEY"))
-          
+
           if "key_id" in PUBKEY:
               NEW_ACCESS_KEY_ID = os.getenv("NEW_ACCESS_KEY_ID")
               NEW_ACCESS_SECRET = os.getenv("NEW_ACCESS_SECRET")
@@ -58,7 +57,15 @@ jobs:
               access_key_id = encrypt(PUBKEY["key"], NEW_ACCESS_KEY_ID)
               access_secret = encrypt(PUBKEY["key"], NEW_ACCESS_SECRET)
 
-              print(json.dumps({"key_id", PUBKEY["key_id"], "access_key_id": access_key_id, "access_secret": access_secret}))
+              print(
+                  json.dumps(
+                      {
+                          "key_id": PUBKEY["key_id"],
+                          "access_key_id": access_key_id,
+                          "access_secret": access_secret,
+                      }
+                  )
+              )
           else:
               raise Exception("No key_id")
           ')
