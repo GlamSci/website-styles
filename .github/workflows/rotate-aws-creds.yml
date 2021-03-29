@@ -1,0 +1,61 @@
+name: Rotate AWS Credentials
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+
+      # Runs a single command using the runners shell
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-west-2
+
+      - name: Copy files to the test website with the AWS CLI
+        run: |
+          apt-get install -y jq
+          
+          PUBKEY=$(curl \
+            -H "Accept: application/vnd.github.v3+json" \
+            "https://api.github.com/repos/${{ github.repository }}/actions/secrets/public-key")
+          export PUBKEY=$PUBKEY
+          
+          ACCESSKEY=$(aws iam create-access-key --user-name "glamsci-website-styles-github-user")
+          
+          NEW_ACCESS_KEY_ID=$(echo $ACCESSKEY | jq -r '.AccessKey.AccessKeyId')
+          export NEW_ACCESS_KEY_ID=$NEW_ACCESS_KEY_ID
+          
+          NEW_ACCESS_SECRET=$(echo $ACCESSKEY | jq -r '.AccessKey.SecretAccessKey')
+          export NEW_ACCESS_SECRET=$NEW_ACCESS_SECRET
+          
+          SEALED_SECRETS=$(python -c '
+          import os
+          import json
+          from base64 import b64encode
+          from nacl import encoding, public
+
+
+          def encrypt(public_key: str, secret_value: str) -> str:
+              """Encrypt a Unicode string using the public key."""
+              public_key = public.PublicKey(public_key.encode("utf-8"), encoding.Base64Encoder())
+              sealed_box = public.SealedBox(public_key)
+              encrypted = sealed_box.encrypt(secret_value.encode("utf-8"))
+              return b64encode(encrypted).decode("utf-8")
+
+
+          PUBKEY = os.getenv("PUBKEY")
+          NEW_ACCESS_KEY_ID = os.getenv("NEW_ACCESS_KEY_ID")
+          NEW_ACCESS_SECRET = os.getenv("NEW_ACCESS_SECRET")
+
+          access_key_id = encrypt(PUBKEY, NEW_ACCESS_KEY_ID)
+          access_secret = encrypt(PUBKEY, NEW_ACCESS_SECRET)
+
+          print(json.dumps({"access_key_id": access_key_id, "access_secret": access_secret}))
+          ')
+          
+          echo $SEALED_SECRETS
