@@ -19,6 +19,7 @@ jobs:
       - name: Rotate credentials with AWS CLI
         run: |
           PUBKEY=$(curl \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
             -H "Accept: application/vnd.github.v3+json" \
             "https://api.github.com/repos/${{ github.repository }}/actions/secrets/public-key")
           export PUBKEY=$PUBKEY
