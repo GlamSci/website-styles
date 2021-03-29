@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy:
+  rotate:
     runs-on: ubuntu-latest
     steps:
 
@@ -16,9 +16,9 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-west-2
 
-      - name: Copy files to the test website with the AWS CLI
+      - name: Rotate credentials with AWS CLI
         run: |
-          apt-get install -y jq
+          sudo apt-get install -y jq
           
           PUBKEY=$(curl \
             -H "Accept: application/vnd.github.v3+json" \
