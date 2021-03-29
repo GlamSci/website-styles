@@ -18,12 +18,12 @@ jobs:
 
       - name: Rotate credentials with AWS CLI
         run: |
-          sudo apt-get install -y jq
-          
           PUBKEY=$(curl \
             -H "Accept: application/vnd.github.v3+json" \
             "https://api.github.com/repos/${{ github.repository }}/actions/secrets/public-key")
           export PUBKEY=$PUBKEY
+          
+          echo $PUBKEY
           
           ACCESSKEY=$(aws iam create-access-key --user-name "glamsci-website-styles-github-user")
           
