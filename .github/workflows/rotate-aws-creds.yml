@@ -49,14 +49,18 @@ jobs:
               return b64encode(encrypted).decode("utf-8")
 
 
-          PUBKEY = os.getenv("PUBKEY")
-          NEW_ACCESS_KEY_ID = os.getenv("NEW_ACCESS_KEY_ID")
-          NEW_ACCESS_SECRET = os.getenv("NEW_ACCESS_SECRET")
+          PUBKEY = json.loads(os.getenv("PUBKEY"))
+          
+          if "key_id" in PUBKEY:
+              NEW_ACCESS_KEY_ID = os.getenv("NEW_ACCESS_KEY_ID")
+              NEW_ACCESS_SECRET = os.getenv("NEW_ACCESS_SECRET")
 
-          access_key_id = encrypt(PUBKEY, NEW_ACCESS_KEY_ID)
-          access_secret = encrypt(PUBKEY, NEW_ACCESS_SECRET)
+              access_key_id = encrypt(PUBKEY["key"], NEW_ACCESS_KEY_ID)
+              access_secret = encrypt(PUBKEY["key"], NEW_ACCESS_SECRET)
 
-          print(json.dumps({"access_key_id": access_key_id, "access_secret": access_secret}))
+              print(json.dumps({"key_id", PUBKEY["key_id"], "access_key_id": access_key_id, "access_secret": access_secret}))
+          else:
+              raise Exception("No key_id")
           ')
           
           echo $SEALED_SECRETS
